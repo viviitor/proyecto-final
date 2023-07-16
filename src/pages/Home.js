@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 
 const Home = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
-    const key = 'Z+JyQFz0NhvLdpPr9PI/Kg==7nwXcmbLbgs6qsiP';
+    const key = process.env.REACT_APP_KEY;
     const headers = {
       'X-Api-Key': key
     }
     
     const nombre ='Michael Jordan'; 
-    const url ='https://api.api-ninjas.com/v1/celebrity?name='+nombre;
-    useEffect(()=>{
+    const url =process.env.REACT_APP_URL+nombre;
+    useEffect(()=>{ 
       Axios.get(url, {headers})
       .then(res=>{console.log(res.data)})
       .catch(error=>{console.log(error)})
