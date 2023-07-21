@@ -14,7 +14,7 @@ function App() {
       <header className="App-header">
         {isAuthenticated ?(
           <Fragment>
-          <nav>
+          <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
           <Link to='/favorites'>Favoritos</Link>
           <Link to='/home'>Home</Link>
           <Link to='/logout'>Logout</Link>
