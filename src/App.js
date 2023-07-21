@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import {Login} from "./auth/Login";
 import {Logout} from "./auth/Logout";
 import { Fragment } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import { Favorites } from "./pages/Favorites";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const {isAuthenticated} = useAuth0();
@@ -11,13 +14,21 @@ function App() {
       <header className="App-header">
         {isAuthenticated ?(
           <Fragment>
-          <Home/>
-          <Logout/>
+          <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+          <Link to='/favorites'>Favoritos</Link>
+          <Link to='/home'>Home</Link>
+          <Link to='/logout'>Logout</Link>
+          </nav>
           </Fragment>
         ): (
         <Login/>
         )}        
       </header>
+      <Routes>
+        <Route path='/favorites' element={<Favorites/>}/>
+        <Route path='/home' element={<SearchBar/>}/>
+        <Route path='/logout' element={<Logout/>}/>
+      </Routes>
     </div>
   );
 }
